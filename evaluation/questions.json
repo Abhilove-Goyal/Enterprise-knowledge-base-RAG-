@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Q1",
+    "question": "What is Retrieval-Augmented Generation (RAG)?",
+    "type": "factual"
+  },
+  {
+    "id": "Q2",
+    "question": "What is attention in the context of RAG post-retrieval?",
+    "type": "concept"
+  },
+  {
+    "id": "Q3",
+    "question": "How is RAG different from fine-tuning a language model?",
+    "type": "comparison"
+  },
+  {
+    "id": "Q4",
+    "question": "What challenges does RAG aim to solve in large language models?",
+    "type": "synthesis"
+  },
+  {
+    "id": "Q5",
+    "question": "Who invented the transformer architecture used in RAG systems?",
+    "type": "out_of_scope"
+  },
+  {
+    "id": "Q6",
+    "question": "Explain attention.",
+    "type": "ambiguous"
+  }
+]

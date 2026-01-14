@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RAG Admin Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body style="background:#0f172a;color:#e5e7eb;font-family:Arial">
+
+<h2>RAG System Health</h2>
+<canvas id="healthChart" width="600" height="300"></canvas>
+
+<script>
+async function loadMetrics() {
+  const res = await fetch("/admin/metrics");
+  const data = await res.json();
+
+  return {
+    labels: [
+      "Avg Faithfulness",
+      "Grounded Rate",
+      "Hallucination Rate",
+      "Low Score Rate"
+    ],
+    values: [
+      data.average_faithfulness ?? 0,
+      data.grounded_rate ?? 0,
+      data.hallucination_rate ?? 0,
+      data.low_score_rate ?? 0
+    ]
+  };
+}
+
+async function renderChart() {
+  const ctx = document.getElementById("healthChart");
+  const metrics = await loadMetrics();
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: metrics.labels,
+      datasets: [{
+        label: "Score",
+        data: metrics.values
+      }]
+    },
+    options: {
+      scales: { y: { min: 0, max: 1 } }
+    }
+  });
+}
+
+renderChart();
+</script>
+
+</body>
+</html>

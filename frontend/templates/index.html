@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enterprise RAG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 40px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .box {
+            max-width: 700px;
+            margin: auto;
+        }
+        .answer {
+            margin-top: 20px;
+            padding: 15px;
+            background: #020617;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1>Enterprise Knowledge Assistant</h1>
+
+    <input id="query" placeholder="Ask a question..." size="50">
+    <button onclick="ask()">Ask</button>
+
+    <div class="answer" id="answer"></div>
+</div>
+
+<script>
+async function ask() {
+    const q = document.getElementById("query").value;
+    document.getElementById("answer").innerHTML = "Thinking...";
+
+    const res = await fetch("/query", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: q })
+    });
+
+    const data = await res.json();
+
+    document.getElementById("answer").innerHTML = `
+        <b>Answer:</b><br>${data.answer}<br><br>
+        <b>Sources:</b><br>${data.sources.join("<br>")}
+    `;
+}
+</script>
+</body>
+</html>

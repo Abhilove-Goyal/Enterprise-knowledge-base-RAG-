@@ -1,0 +1,7 @@
+id,question_type,faithfulness_score,verdict,human_label
+Q1,factual,1.0,grounded,correct | partially_correct | incorrect | correct_refusal
+Q2,concept,1.0,grounded,correct | partially_correct | incorrect | correct_refusal
+Q3,comparison,0.85,grounded,correct | partially_correct | incorrect | correct_refusal
+Q4,synthesis,1.0,grounded,correct | partially_correct | incorrect | correct_refusal
+Q5,out_of_scope,0.5,hallucinated,correct | partially_correct | incorrect | correct_refusal
+Q6,ambiguous,1.0,grounded,correct | partially_correct | incorrect | correct_refusal

@@ -1,0 +1,13 @@
+{
+  "total_questions": 3,
+  "average_faithfulness": 0.95,
+  "verdict_distribution": {
+    "grounded": 3
+  },
+  "grounded_rate": 1.0,
+  "hallucination_rate": 0.0,
+  "low_score_rate": 0.0,
+  "avg_faithfulness_by_type": {
+    "unknown": 0.95
+  }
+}
