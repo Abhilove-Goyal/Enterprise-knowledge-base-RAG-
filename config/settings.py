@@ -1,19 +1,22 @@
+from typing import Optional
 from pydantic_settings import BaseSettings
 from pydantic import Field
 
-
 class Settings(BaseSettings):
-    # Paths
+    # Environment
     ENVIRONMENT: str = "local"
-    SUPABASE_URL : str
-    SUPABASE_KEY : str 
+
+    # Supabase (OPTIONAL)
+    SUPABASE_URL: Optional[str] = None
+    SUPABASE_KEY: Optional[str] = None
+
+    # Paths
     DATA_PATH: str = Field(default="data/docs")
     INDEX_PATH: str = Field(default="index")
-    # LOG_PATH: str = Field(default="logs/interactions.jsonl")
-    
+
     # Ollama
     OLLAMA_BASE_URL: str = Field(default="http://localhost:11434")
-# for docker we use ollama:11434
+
     # Models
     EMBEDDING_MODEL: str = Field(default="nomic-embed-text")
     GENERATION_MODEL: str = Field(default="llama2")
@@ -30,8 +33,6 @@ class Settings(BaseSettings):
     CHUNK_OVERLAP: int = 150
 
     # Evaluation
-    # RERANK_MIN_SCORE: int = 3
-    ENVIRONMENT: str = "development"
     ENABLE_EVALUATION: bool = True
 
     class Config:
@@ -42,7 +43,3 @@ class Settings(BaseSettings):
 
 def get_settings():
     return Settings()
-
-# Backwards-compatible single-instance settings object used across the project
-# Some modules import `settings` directly, so provide it here.
-settings = get_settings()
