@@ -9,8 +9,8 @@ class Settings(BaseSettings):
     SUPABASE_KEY : str 
     DATA_PATH: str = Field(default="data/docs")
     INDEX_PATH: str = Field(default="index")
-    LOG_PATH: str = Field(default="logs/interactions.jsonl")
-
+    # LOG_PATH: str = Field(default="logs/interactions.jsonl")
+    
     # Ollama
     OLLAMA_BASE_URL: str = Field(default="http://localhost:11434")
 # for docker we use ollama:11434
@@ -30,7 +30,8 @@ class Settings(BaseSettings):
     CHUNK_OVERLAP: int = 150
 
     # Evaluation
-    RERANK_MIN_SCORE: int = 3
+    # RERANK_MIN_SCORE: int = 3
+    ENVIRONMENT: str = "development"
     ENABLE_EVALUATION: bool = True
 
     class Config:
