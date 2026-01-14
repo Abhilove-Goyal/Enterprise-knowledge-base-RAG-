@@ -5,7 +5,14 @@ from ingestion.cleaner import clean_documents
 from chunking.splitter import split_documents
 from embeddings.embedder import get_embeddings
 from indexing.vectorstore import build_index
+from fastapi import FastAPI
 
+# create FastAPI instance
+app = FastAPI()
+
+# import your existing routers or API logic
+from api.app import router  # adjust if you have routers
+app.include_router(router)
 load_dotenv()
 
 def run_indexing():
