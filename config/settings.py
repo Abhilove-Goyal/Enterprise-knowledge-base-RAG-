@@ -4,6 +4,7 @@ from pydantic import Field
 
 class Settings(BaseSettings):
     # Paths
+    ENVIRONMENT: str = "local"
     SUPABASE_URL : str
     SUPABASE_KEY : str 
     DATA_PATH: str = Field(default="data/docs")
