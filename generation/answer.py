@@ -30,8 +30,16 @@ Answer:
 
 def generate_answer(query: str, docs: list) -> str:
     if not docs:
-        return "I don't have enough information to answer this question."
+        return "No relevant context found."
 
+    # 🚨 PROD SAFE FALLBACK
+    if settings.ENVIRONMENT == "production":
+        return (
+            "Answer generation is disabled in this deployment. "
+            "Relevant context has been retrieved successfully."
+        )
+
+    # --- LOCAL ONLY (Ollama)
     context = "\n\n".join(d.page_content for d in docs)
 
     response = llm.invoke(
@@ -41,3 +49,4 @@ def generate_answer(query: str, docs: list) -> str:
         )
     )
     return response.strip()
+
