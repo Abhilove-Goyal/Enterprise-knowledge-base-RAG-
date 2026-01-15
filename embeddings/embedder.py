@@ -1,9 +1,6 @@
-from langchain_ollama import OllamaEmbeddings
-from config.settings import settings
+from langchain.embeddings import SentenceTransformerEmbeddings
 
 def get_embeddings():
-    return OllamaEmbeddings(
-        model=settings.EMBEDDING_MODEL,
-        base_url=settings.OLLAMA_BASE_URL
+    return SentenceTransformerEmbeddings(
+        model_name="all-MiniLM-L6-v2"
     )
-
