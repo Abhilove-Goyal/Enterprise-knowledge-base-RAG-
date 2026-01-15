@@ -1,9 +1,8 @@
 torch==2.2.0
 transformers==4.40.2
-langchain==0.1.208
+langchain>=0.1.208
 faiss-cpu==1.7.4
-https://github.com/UKPLab/instructor-transformers/archive/refs/heads/main.zip
-
+https://github.com/UKPLab/instructor-transformers/archive/refs/heads/master.zip
 aiohappyeyeballs==2.6.1
 aiohttp==3.13.2
 aiosignal==1.4.0
@@ -90,6 +89,7 @@ uvicorn==0.40.0
 xxhash==3.6.0
 yarl==1.22.0
 zstandard==0.25.0
+
 
 
 
