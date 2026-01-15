@@ -1,6 +1,6 @@
 torch==2.2.0
-transformers==4.40.0
-instructor-transformers==2.2.0
+transformers==4.40.2
+instructor-transformers==2.1.0
 langchain==0.1.208
 faiss-cpu==1.7.4
 aiohappyeyeballs==2.6.1
@@ -89,6 +89,7 @@ uvicorn==0.40.0
 xxhash==3.6.0
 yarl==1.22.0
 zstandard==0.25.0
+
 
 
 
