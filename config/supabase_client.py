@@ -1,8 +1,16 @@
-from supabase import create_client
-from config.settings import settings
+# config/supabase_client.py
+import os
+from typing import Optional
 
-supabase = create_client(
-    settings.SUPABASE_URL,
-    settings.SUPABASE_KEY
-)
+supabase = None  # default
 
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+
+if SUPABASE_URL and SUPABASE_KEY:
+    try:
+        from supabase import create_client
+        supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+    except Exception as e:
+        # Log but NEVER crash the app
+        print(f"[WARN] Supabase disabled: {e}")
